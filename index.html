@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dispatching Team | Elite Freight Dispatch Services</title>
+    <title>Dispatching Team | Professional Freight Dispatching Services</title>
     <style>
         :root {
-            --bg-dark: #0b0f19;
-            --bg-card: #131a26;
-            --accent-color: #ff5e14; /* Flashy Transport Orange/Red */
+            --bg-dark: #070a12;
+            --bg-card: #0f1624;
+            --accent-color: #ff5e14; /* Flash Transport Premium Orange */
+            --accent-glow: rgba(255, 94, 20, 0.15);
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --border-color: #1e293b;
@@ -18,6 +19,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -25,17 +27,27 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 80px;
         }
 
-        header {
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(7, 10, 18, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
         }
 
         .logo {
@@ -43,35 +55,57 @@
             font-weight: 800;
             letter-spacing: -0.05em;
             color: var(--text-main);
+            text-decoration: none;
         }
         .logo span {
             color: var(--accent-color);
         }
 
-        .btn-quote {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 10px 22px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: opacity 0.2s ease;
-        }
-        .btn-quote:hover {
-            opacity: 0.9;
-        }
-        <!-- Sticky Navigation inside index.html -->
-    
-        /* Hero / Introduction Section */
-        .hero {
-            max-width: 800px;
-            margin: 80px auto 60px auto;
-            text-align: center;
-            padding: 0 20px;
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
         }
 
-        .hero-tag {
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s ease !important;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* Global Sections Layout */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .tag {
             text-transform: uppercase;
             color: var(--accent-color);
             font-size: 0.85rem;
@@ -81,52 +115,86 @@
             display: inline-block;
         }
 
-        .hero h1 {
-            font-size: 3rem;
+        .section-header h2 {
+            font-size: 2.5rem;
             font-weight: 800;
             letter-spacing: -0.03em;
-            line-height: 1.15;
-            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
         }
 
-        /* Services Grid Section */
-        .services-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Stats Bar */
+        .stats-bar {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
         }
 
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 24px;
-            margin-top: 40px;
         }
 
         .service-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 40px 30px;
+            padding: 45px 35px;
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             border-color: #334155;
         }
 
-        .icon-wrapper {
-            width: 48px;
-            height: 48px;
-            background-color: rgba(255, 94, 20, 0.1);
+        .icon-box {
+            width: 52px;
+            height: 52px;
+            background-color: var(--accent-glow);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -134,92 +202,366 @@
             margin-bottom: 24px;
         }
 
-        .icon-wrapper svg {
-            width: 24px;
-            height: 24px;
+        .icon-box svg {
+            width: 26px;
+            height: 26px;
             fill: var(--accent-color);
         }
 
         .service-card h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 750;
             margin-bottom: 12px;
             letter-spacing: -0.02em;
         }
 
         .service-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.98rem;
+        }
+
+        /* Features Split Section */
+        .features-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .features-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .features-content p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .feature-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .feature-row-icon {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .feature-row h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        /* Integrated Contact Form Layout */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 60px;
+            margin-bottom: 60px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+        }
+
+        .info-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-item h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+            margin-bottom: 4px;
+        }
+
+        .info-item p {
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        /* Form Sub-Styling */
+        .form-group {
             margin-bottom: 20px;
         }
 
-        .learn-more {
-            color: var(--text-main);
-            text-decoration: none;
+        .form-group label {
+            display: block;
             font-size: 0.9rem;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .learn-more:hover {
-            color: var(--accent-color);
+            margin-bottom: 8px;
+            color: var(--text-muted);
         }
 
-        /* Responsive scaling */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .services-grid { grid-template-columns: 1fr; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 14px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .btn-submit {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn-submit:hover { opacity: 0.9; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 968px) {
+            .features-split, .contact-container { grid-template-columns: 1fr; gap: 40px; }
+            .contact-container { padding: 40px 24px; }
+            .hero h1 { font-size: 2.8rem; }
+            .stats-bar { grid-template-columns: 1fr; gap: 25px; padding: 30px; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">DISPATCH<span>TEAM</span></div>
-        <a href="contact.html" class="btn-quote">Get A Quote</a>
-    </header>
+    <!-- Sticky Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">DISPATCH<span>TEAM</span></a>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#why-us">Why Choose Us</a>
+                <a href="#contact" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Main Content Area -->
     <main>
+
+        <!-- Hero View Area -->
         <section class="hero">
-            <span class="hero-tag">Professional Solutions</span>
-            <h1>Our Transportation & Dispatch Services</h1>
-            <p>We keep your fleet moving with premier dispatch management, optimal routing, and dedicated broker negotiations.</p>
+            <span class="tag">Next-Gen Dispatch Engine</span>
+            <h1>Maximize Truck Revenue With Top-Tier Dispatching</h1>
+            <p>We eliminate empty miles, command premium gross rates, and handle all your broker setup complications behind the scenes.</p>
+            <a href="#contact" class="btn-primary" style="padding: 15px 35px; font-size: 1rem;">Setup Your Fleet Now</a>
+
+            <!-- Stats Ribbon Box -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <h3>$4.2k+</h3>
+                    <p>Average Weekly Gross</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Broker Credit Clearance Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Active Route Support</p>
+                </div>
+            </div>
         </section>
 
-        <section class="services-container" id="Services">
+        <!-- Dynamic Services Grid Section -->
+        <section id="services">
+            <div class="section-header">
+                <span class="tag">What We Handle</span>
+                <h2>Complete Fleet Support Ecosystem</h2>
+            </div>
+
             <div class="services-grid">
-
+                <!-- Card 1 -->
                 <div class="service-card">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0.67 1.5 1.5-.67 1.5-1.5 1.5zm1-5.5H3V6h11v7h5v-2z"/></svg>
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
                     </div>
-                    <h3>Freight Dispatching</h3>
-                    <p>Comprehensive load booking and professional rate negotiations to secure maximum payout per mile for your equipment type.</p>
-                    <a href="#" class="learn-more">Read More &rarr;</a>
+                    <h3>Dry Van & Reefer Dispatch</h3>
+                    <p>Consistent, top-paying lanes keeping your temperature-controlled units and dry vans running productively with elite brokers.</p>
                 </div>
 
+                <!-- Card 2 -->
                 <div class="service-card">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M22 11h-4.17l3.24-3.24-1.41-1.42L15 11h-2V9l4.66-4.66-1.42-1.41L13 6.17V2h-2v4.17L7.76 2.93 6.34 4.34 11 9v2H9L4.34 6.34 2.93 7.76 6.17 11H2v2h4.17l-3.24 3.24 1.41 1.42L9 13h2v2l-4.66 4.66 1.42 1.41L11 17.83V22h2v-4.17l3.24 3.24 1.42-1.41L13 15v-2h2l4.66 4.66 1.41-1.42L17.83 13H22v-2z"/></svg>
                     </div>
-                    <h3>Route Optimization</h3>
-                    <p>Strategic route planning that eliminates deadhead miles, circumvents bad weather conditions, and avoids heavy transit delays.</p>
-                    <a href="#" class="learn-more">Read More &rarr;</a>
+                    <h3>Flatbed & Specialized Loadouts</h3>
+                    <p>Heavy haul, stepdeck, and oversized transport assignments executed accurately based on precise scaling specs and structural requirements.</p>
                 </div>
 
+                <!-- Card 3 -->
                 <div class="service-card">
-                    <div class="icon-wrapper">
-                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                    </div>
+                    <h3>Optimized Smart Routing</h3>
+                    <p>Advanced route planning that accounts for dynamic weather variations, construction setbacks, and fuel-efficient corridors.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
                     </div>
                     <h3>Broker Setup & Compliance</h3>
-                    <p>We handle all required packet submissions, insurance updates, and credit checks so you are cleared seamlessly with top-tier brokers.</p>
-                    <a href="#" class="learn-more">Read More &rarr;</a>
+                    <p>Instant submission of carrier packets, safety profile assertions, and fast validation checks for prompt lane assignments.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    </div>
+                    <h3>Invoicing & Paperwork</h3>
+                    <p>Prompt management of Bills of Lading (BOL), rate confirmations, and invoice factory routing to eliminate payment delays.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="service-card">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                    </div>
+                    <h3>24/7 Detention Support</h3>
+                    <p>Immediate mitigation when detention conditions emerge at shippers or receivers, guaranteeing you receive tracking compensation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Split Value Proposition Section -->
+        <section id="why-us" class="features-split">
+            <div>
+                <span class="tag">Engineered For Carriers</span>
+                <h2>We Handle The Stress. You Drive.</h2>
+                <p>Don't balance booking apps on your phone while steering a heavy rig. Let dedicated lane managers optimize your business targets safely.</p>
+            </div>
+            <div>
+                <div class="feature-row">
+                    <div class="feature-row-icon">&#10003;</div>
+                    <div>
+                        <h4>No Forced Dispatching</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">You maintain ultimate control over where your drivers move and when they return home.</p>
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-row-icon">&#10003;</div>
+                    <div>
+                        <h4>High Credit Broker Portfolios</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">We check every broker's factoring verification status before presenting options to you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integrated Contact Section -->
+        <section id="contact">
+            <div class="contact-container">
+                
+                <!-- Left Side: Details -->
+                <div class="contact-info">
+                    <span class="tag">Connect Now</span>
+                    <h2>Get In Touch With Our Dispatch Room</h2>
+                    <p>Ready to get your trucks rolling? Submit your fleet details or reach out via our direct operational channels.</p>
+                    
+                    <div class="info-details">
+                        <div class="info-item">
+                            <h4>Direct Phone Support</h4>
+                            <p>+1 (800) 555-0199</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Email Address</h4>
+                            <p>info@dispatchingteam.com</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Operations HQ</h4>
+                            <p>100 Logistics Blvd, Suite 400<br>Chicago, IL 60601</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Contact Form -->
+                <div>
+                    <form action="mailto:info@dispatchingteam.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="name">Your Name / Company Name</label>
+                            <input type="text" id="name" name="Name" required placeholder="e.g. Trucking LLC">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="Phone" required placeholder="(555) 555-5555">
+                        </div>
+                        <div class="form-group">
+                            <label for="trucks">Equipment Type</label>
+                            <select id="trucks" name="Equipment Type">
+                                <option value="Dry Van">Dry Van</option>
+                                <option value="Reefer">Reefer</option>
+                                <option value="Flatbed">Flatbed / Stepdeck</option>
+                                <option value="Power Only">Power Only</option>
+                                <option value="Fleet Setup">Multiple Trucks / Fleet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Lanes Needed / Notes</label>
+                            <textarea id="message" name="Notes" rows="4" placeholder="Tell us about your preferred lanes or home-time requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Submit Fleet Profile</button>
+                    </form>
                 </div>
 
             </div>
         </section>
+
     </main>
+
+    <!-- Footer Content -->
+    <footer>
+        <p>&copy; 2026 Dispatching Team Systems Inc. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
