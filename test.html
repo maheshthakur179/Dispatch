@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatching Team | Elite Freight Dispatch Services</title>
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #131a26;
+            --accent-color: #ff5e14; /* Flashy Transport Orange/Red */
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--text-main);
+        }
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .btn-quote {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: opacity 0.2s ease;
+        }
+        .btn-quote:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero / Introduction Section */
+        .hero {
+            max-width: 800px;
+            margin: 80px auto 60px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-tag {
+            text-transform: uppercase;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid Section */
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: #334155;
+        }
+
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 94, 20, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .learn-more {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .learn-more:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">DISPATCH<span>TEAM</span></div>
+        <a href="mailto:info@dispatchingteam.com" class="btn-quote">Get A Quote</a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <span class="hero-tag">Professional Solutions</span>
+            <h1>Our Transportation & Dispatch Services</h1>
+            <p>We keep your fleet moving with premier dispatch management, optimal routing, and dedicated broker negotiations.</p>
+        </section>
+
+        <section class="services-container" id="Services">
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0.67 1.5 1.5-.67 1.5-1.5 1.5zm1-5.5H3V6h11v7h5v-2z"/></svg>
+                    </div>
+                    <h3>Freight Dispatching</h3>
+                    <p>Comprehensive load booking and professional rate negotiations to secure maximum payout per mile for your equipment type.</p>
+                    <a href="#" class="learn-more">Read More &rarr;</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h3>Route Optimization</h3>
+                    <p>Strategic route planning that eliminates deadhead miles, circumvents bad weather conditions, and avoids heavy transit delays.</p>
+                    <a href="#" class="learn-more">Read More &rarr;</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <h3>Broker Setup & Compliance</h3>
+                    <p>We handle all required packet submissions, insurance updates, and credit checks so you are cleared seamlessly with top-tier brokers.</p>
+                    <a href="#" class="learn-more">Read More &rarr;</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
